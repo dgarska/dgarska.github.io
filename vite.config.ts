@@ -3,6 +3,9 @@ import { defineConfig } from "vite";
 import Vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
-  base: "https://dgarska.github.io/",
+  base: "/dgarska.github.io",
   plugins: [Vue()],
+  build: {
+    outDir: "docs",
+  },
 });
