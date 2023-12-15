@@ -19,7 +19,6 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "src/composables/firebase.ts",
     "tests/**/*.ts"
   ]
 }
