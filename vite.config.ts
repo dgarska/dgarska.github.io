@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 import Vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
-  base: "/main/",
+  base: "/",
   plugins: [Vue()],
   build: {
     outDir: "docs",
