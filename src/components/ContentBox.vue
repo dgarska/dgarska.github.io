@@ -9,11 +9,11 @@
         </div>
 
         <div class="grid grid-cols-2 p-5 gap-2">
-          <div>Gesparrte Lebenszeit</div>
+          <div>Saved lifetime</div>
           <div>{{ seconds }} Sekunden</div>
-          <div>Passives Einkommen</div>
+          <div>Passive income</div>
           <div>
-            <span class="text-green-400">{{ stealedMoney }}</span> €
+            <span class="text-green-400">{{ savedMoney }}</span> €
           </div>
         </div>
       </div>
@@ -30,15 +30,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, Ref } from "vue";
-import NoSleep from "./components/NoSleep.vue";
+import { ref, onMounted, Ref } from "vue";
 const seconds: Ref<number> = ref(0);
-const stealedMoney: Ref<number> = ref(0);
-const x = ref(0);
-const y = ref(0);
-const xSpeed = ref(2);
-const ySpeed = ref(2);
-const rotationAngle = ref(0);
+const savedMoney: Ref<number> = ref(0);
+const x: Ref<number> = ref(0);
+const y: Ref<number> = ref(0);
+const xSpeed: Ref<number> = ref(2);
+const ySpeed: Ref<number> = ref(2);
+const rotationAngle: Ref<number> = ref(0);
 const movingObjectRef = ref(null);
 
 const countSeconds = () => {
@@ -46,9 +45,9 @@ const countSeconds = () => {
   if (document.visibilityState === "visible") {
     seconds.value++;
 
-    //12,41 per Hour calculate second
-    stealedMoney.value = (seconds.value * 12.41) / 3600;
-    stealedMoney.value = Math.round(stealedMoney.value * 100) / 100;
+    //12.41 per Hour (germany min. earning/hour)
+    savedMoney.value = (seconds.value * 12.41) / 3600;
+    savedMoney.value = Math.round(savedMoney.value * 100) / 100;
   }
   setTimeout(countSeconds, 1000);
 };
@@ -80,9 +79,5 @@ const moveObject = () => {
 onMounted(() => {
   movingObjectRef.value = document.getElementById("movingObject");
   setInterval(moveObject, 1000 / 60);
-});
-
-onBeforeUnmount(() => {
-  clearInterval(moveObject);
 });
 </script>
