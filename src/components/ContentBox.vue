@@ -1,6 +1,6 @@
 <template>
   <div class="relative font-serif">
-    <div class="absolute top-5 left-1/3 z-10">
+    <!-- <div class="absolute top-5 left-1/3 z-10">
       <div
         class="border-4 border-yellow-300 border-dotted flex flex-col relative"
       >
@@ -17,10 +17,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <img
-      class="w-20 h-20 cover"
+      class="w-60 h-40 cover"
       ref="movingObject"
       id="movingObject"
       src="../assets/asset.png"
@@ -35,8 +35,8 @@ const seconds: Ref<number> = ref(0);
 const savedMoney: Ref<number> = ref(0);
 const x: Ref<number> = ref(0);
 const y: Ref<number> = ref(0);
-const xSpeed: Ref<number> = ref(2);
-const ySpeed: Ref<number> = ref(2);
+const xSpeed: Ref<number> = ref(5);
+const ySpeed: Ref<number> = ref(5);
 const rotationAngle: Ref<number> = ref(0);
 const movingObjectRef = ref(null);
 
@@ -63,7 +63,7 @@ const moveObject = () => {
 
   x.value += xSpeed.value;
   y.value += ySpeed.value;
-  rotationAngle.value += 2;
+  rotationAngle.value += 3.5;
 
   if (x.value + movingObject.offsetWidth > window.innerWidth || x.value < 0) {
     xSpeed.value = -xSpeed.value;
